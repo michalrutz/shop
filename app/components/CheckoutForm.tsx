@@ -1,91 +1,48 @@
 "use client"
 
-import { useShopStore } from '@/store';
-import {PaymentElement} from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import { useState, useEffect } from "react"
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
+import formatPrice from "../functions/formatPrice"
+import { useShopStore } from "@/store"
 
 export default function CheckoutForm() {
-  const {cartItems, paymentIntentsID, setPaymentIntentsID } = useShopStore()
-  const [secret, setSecret] = useState("")
-  const [msg, setSMsg] = useState("")
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const shopStore = useShopStore()
 
 
-  //a hard-coded order example
-  const order = { amount:1000, paymentIntentsID }
 
-  async function fetchSecret(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("FETCH SECRET")
-
-    let data = {
-      secret: secret,
-      paymentIntentsID: paymentIntentsID,
-      message: msg
-    };
-
-    //check if paymentIntentsID already exists
-    if(paymentIntentsID===""){
-      data = await(
-        await fetch(
-          "http://localhost:3000/api/stripe/payment-intent/create",{
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            //add the Products in the cart here
-            body: JSON.stringify( order )
-          }
-        )
-      ).json()
-    }
-    //retrieve the existing payment intent
-    else {
-      data = await(
-        await fetch(
-          "http://localhost:3000/api/stripe/payment-intent/retrieve",{
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify( {paymentIntentsID} )
-          }
-        )
-      ).json()
+    if (!stripe || !elements) {
+      return
     }
 
-    if( data.secret!=="" ){
-      setSecret( data.secret )
-      setPaymentIntentsID( data.paymentIntentsID )
-      setSMsg( data.message )
-    }else{
-      setSMsg( data.message )
-    }  
-  }
-
-  async function fetchCancel(e:React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-
-    e.preventDefault()
-
-    const cancel = await (await fetch("http://localhost:3000/api/stripe/payment-intent/cancel",{
-      method:"POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({paymentIntentsID})
-    })).json()
-
-    console.log(cancel)
-
-    setPaymentIntentsID("")
-    setSecret("")
-    setSMsg(cancel.message)
+    stripe
+      .confirmPayment({
+        elements,
+        redirect: "if_required",
+      })
+      .then((result) => {
+        if (!result.error) {
+          //shopStore.setCheckout("success")
+        }
+      })
   }
 
   return (
-    <form className=
-    'flex flex-col justify-center bg-slate-500 m-auto md:max-w-3xl p-3 pt-4 pb-6'>
-      <p>post the order, server creates payment-intent, returns the client secret</p>
-      <button onClick={ (e)=>{ fetchSecret(e) } }>Submit</button>
-      { paymentIntentsID && <button onClick={ (e)=>{ fetchCancel(e) } }>Cancel</button>}
-      {msg}
-      <p><span className='font-bold'>Client Secret: </span>{secret}</p>
-      <p><span className='font-bold'>paymentIntentsID: </span>{paymentIntentsID}</p>
+    <form onSubmit={handleSubmit} id="payment-form">
+      <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
+      <h1 className="py-4 text-sm font-bold ">Total: {1000}</h1>
+      <button
+        className={`py-2 mt-4  w-full bg-primary rounded-md text-white disabled:opacity-25`}
+        id="submit"
+      >
+        <span id="button-text">
+         <span>Pay now 🔥</span>
+        </span>
+      </button>
     </form>
-  );
-};
-
+  )
+}

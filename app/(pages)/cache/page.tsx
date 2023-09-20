@@ -1,7 +1,7 @@
 
 "use client"
 
-import CheckoutForm from '@/app/components/CheckoutForm';
+import CheckoutForm from '@/app/components/Checkout';
 import React, { useEffect, useState } from 'react';
 
 export default function Page() {

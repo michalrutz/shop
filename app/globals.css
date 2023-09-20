@@ -8,6 +8,18 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+:root.inter {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -24,4 +36,43 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.seconderyText {
+  color: rgb(100, 116, 139);
+  font-size:medium;
+}
+
+.callToAction {
+  font-size: medium;
+  padding: 6px;
+  border: solid 1px transparent;
+  border-radius: 10px;
+}
+
+
+.callToAction {
+  font-size: medium;
+  padding: 6px;
+  border: solid 1px transparent;
+  border-radius: 10px;
+}
+.Dom {
+  background-color: rgb(20,184,166);
+  color: white;
+  border-color: transparent;
+}
+.Sub {
+  background-color: transparent;
+  color: rgb(20,184,166);
+  border-color: rgb(20,184,166);
+}
+
+.mainImg {
+  height: 100%;
+  max-height: 512px;
+}
+
+.shade {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.125)
 }

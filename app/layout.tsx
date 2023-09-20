@@ -1,11 +1,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import Providers from './components/Providers'
 import Link from "next/link";
 import Navigation from './components/Navigation';
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Roboto({
+  subsets: ['latin'],
+  weight: ["400", "500", "700", "900"]
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,15 +17,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-
-
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className }>
+        <div className='h-screen overflow-hidden bg-slate-100'>
+
         <Navigation/>
         <Providers> {/* SessionProvider */}
-          {children}
+          <div className='max-w-[1280px] m-auto flex flex-row justify-between '>
+            {children}
+          </div>
         </Providers>
+        </div>
       </body>
     </html>
   )

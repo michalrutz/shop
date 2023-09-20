@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import {PaymentElement} from '@stripe/react-stripe-js';
-import CheckoutForm from '@/app/components/CheckoutForm';
+import CheckoutForm from '@/app/components/Checkout';
 import { useOnlineStatus } from '@/app/components/useOnlineStatus';
 import { useEffect } from 'react';
 
@@ -27,7 +27,6 @@ const ClientProtectPage = () => {
         </h1>
         <h2 className='mt-4 font-medium'>You are logged in as:</h2>
         <p className='mt-4'>{session?.user?.name}</p>
-        <CheckoutForm />
       </div>
     </section>
   )

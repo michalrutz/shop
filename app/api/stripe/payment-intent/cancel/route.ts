@@ -5,10 +5,11 @@ const stripe = new Stripe(process.env.STRIPE_TEST_SECRET as string, { apiVersion
 
 export async function POST(request:NextRequest, response:NextResponse) {
 
-  const body = await request.json()
+  const {paymentIntentsID} = await request.json()
+  console.log("CANCEL paymentIntent")
 
   const canceledPaymentIntent = await stripe.paymentIntents.cancel(
-    body.paymentIntentsID
+    paymentIntentsID
   );
 
   return NextResponse.json({
