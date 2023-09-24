@@ -2,15 +2,18 @@ import SetOrder from "@/app/components/SingleProduct/SetOrder";
 import Stripe from "stripe";
 import Image from 'next/image';
 import { DisplayProduct } from "@/app/components/SingleProduct/DisplayProduct";
+import { Price, Product } from "@/type";
+
 
 export default async function SingleProduct( {params}:{params:{id:string}} ) {
   const {id} = params; //get the query [id]
   //get Price and the Priduct from Stripe
+  
   const stripe = await new Stripe( process.env.STRIPE_TEST_SECRET as string, { apiVersion: "2022-11-15"} )
   const price = await stripe.prices.retrieve(
     id
   );
-  const product = await stripe.products.retrieve(
+  const product:any = await stripe.products.retrieve(
     price.product.toString()
   )
   const { id:priceID, unit_amount, currency } = price
@@ -25,7 +28,7 @@ export default async function SingleProduct( {params}:{params:{id:string}} ) {
         style={{objectFit: "contain"}}
       />
       <div className="flex flex-col pt-4 min-w-[256px] justify-start align-top m-2">
-        <DisplayProduct product={product} price={price}/>
+        <DisplayProduct product={product} />
         <SetOrder priceID={priceID} unit_amount={unit_amount} currency={currency}/>
       </div>
     </div>

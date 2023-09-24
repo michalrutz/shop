@@ -6,14 +6,12 @@ export type Price = {
 export interface Product  {
   id: string,
   name: string,
-  unit_amount: number,
-  images: [string],
-  currency: string,
-  description: string,
-  metadata: Details
+  images: string[],
+  description: string | null,
+  metadata: Metadata
 }
 
-interface Details {
+interface Metadata {
   date: number,
   technique: string
 }
@@ -22,7 +20,7 @@ export type ProductWithPrice = {
   id: string,
   name: string,
   unit_amount: number,
-  images: [string],
+  images: string[],
   currency: string,
   priceID: string,
   quantity: number,
