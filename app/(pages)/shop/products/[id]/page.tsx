@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import Image from 'next/image';
 import { DisplayProduct } from "@/app/components/SingleProduct/DisplayProduct";
 
-export default async function SingleProduct( {params} ) {
+export default async function SingleProduct( {params}:{params:{id:string}} ) {
   const {id} = params; //get the query [id]
   //get Price and the Priduct from Stripe
   const stripe = await new Stripe( process.env.STRIPE_TEST_SECRET as string, { apiVersion: "2022-11-15"} )
