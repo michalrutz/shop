@@ -2,8 +2,6 @@ import SetOrder from "@/app/components/SingleProduct/SetOrder";
 import Stripe from "stripe";
 import Image from 'next/image';
 import { DisplayProduct } from "@/app/components/SingleProduct/DisplayProduct";
-import { Price, Product, PriceObject } from "@/type";
-
 
 export default async function SingleProduct( {params}:{params:{id:string}} ) {
   const {id} = params; //get the query [id]
