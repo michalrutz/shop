@@ -12,7 +12,7 @@ export default async function Page() {
       >
         <p className="pt-8" >{session?.user?.email}</p>
         <p className="pt-8">{session?.user?.name}</p>
-      <Image src={session?.user?.image}
+      <Image src={session?.user?.image as string}
         width={100}
         height={100}
         alt="Picture of the author"

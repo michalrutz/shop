@@ -24,7 +24,7 @@ export default function CardButton() {
   useEffect( ()=> { setQ( calculateQuantity(state.cartItems) ) },[snap.cartItems]) 
 
   return(
-    <Link href="http://localhost:3000/shop/cart" className="relative ">
+    <Link href="/shop/cart" className="relative ">
       <PiShoppingCartThin className="w-10 h-10 text-slate-800
       "/> 
       { quanity ? 

@@ -10,6 +10,7 @@ export type ProductWithPrice = {
   images: [string],
   currency: string,
   priceID: string,
+  quantity: number,
   description: string,
   metadata: {}
 }

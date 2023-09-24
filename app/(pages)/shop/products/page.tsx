@@ -31,8 +31,7 @@ export default async function GetProductsPage() {
                   <span className='text-xs self-start items-start relative top-[3px] left-0.5'>{ product.unit_amount.toString().slice(-2) }</span>
                 </div>
               </div>
-            </div>
-            
+            </div>     
           </Link>
           )}
       )}
