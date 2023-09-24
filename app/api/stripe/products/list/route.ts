@@ -1,4 +1,3 @@
-import { ProductWithPrice } from "@/type";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
