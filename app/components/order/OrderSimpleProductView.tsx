@@ -1,14 +1,11 @@
 import Link from "next/link"
 import Image from 'next/image'
-import { state } from "@/valtio/store";
-import { snapshot } from "valtio";
 import { useEffect, useState } from "react";
 import { ProductWithPrice } from "@/type"
-import { SmallRound } from "../buttons/SmallRound";
+import { Price } from "@/type"
 
-export default  function OrderSimpleProductView( props ) {
+export default  function OrderSimpleProductView( props: { item: Price } ) {
   const { item } = props
-  const snap = snapshot(state)
   const [product, setProduct] = useState<ProductWithPrice>()
 
 
@@ -29,21 +26,13 @@ export default  function OrderSimpleProductView( props ) {
 	  return () => {"component UNMONTED"};
   }, []);
 
-  function removeItem( priceID:string ) {
-    state.cartItems = snap.cartItems.filter( item => item.priceID !== priceID)
-  }
-  function adjustQuantity( priceID:string, num:number ) {
-    let item = state.cartItems.find( item => item.priceID === priceID )
-    item && (item.quantity += num)
-  }
-
 
   return(
     
   <div key={item.priceID} className="flex flex-row shade">
     { product ? (
     <>
-      <Link href={"http://localhost:3000/shop/products/"+item.priceID} className="min-w-[100px] flex flex-col " >
+      <Link href={"/shop/products/"+item.priceID} className="min-w-[100px] flex flex-col " >
         <Image className="rounded-md max-h-full"
           src={product?.images[0]}
           // Route of the image file
