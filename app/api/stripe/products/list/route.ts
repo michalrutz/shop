@@ -1,3 +1,4 @@
+import { ProductWithPrice, ProductWithPriceNoQuantity } from "@/type";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -8,10 +9,11 @@ export async function GET(request: Request) {
     limit:10
   })
 
-
-  const productWithPrices = await Promise.all(
+  let productWithPrices;
+  if (products?.data){
+    productWithPrices = await Promise.all(
     products.data.map(async (product) => {
-      const price = await stripe.prices.retrieve( product.default_price )
+      const price = await stripe.prices.retrieve( product.default_price as string)
       return {
         id: product.id,
         name: product.name,
@@ -24,6 +26,8 @@ export async function GET(request: Request) {
       }
     })
   )
+  } 
+
 
   return NextResponse.json( productWithPrices )
 }
