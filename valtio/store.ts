@@ -15,7 +15,7 @@ if (typeof localStorage !== 'undefined') {
 }
 
 // Create the state object with the Product type
-export const state = proxy<{ cartItems: ProductWithPrice[] }>(
+export const state = proxy<{ cartItems: Product[] }>(
   storedData ? JSON.parse(storedData) : { cartItems: [] }
 );
 

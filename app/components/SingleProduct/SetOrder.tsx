@@ -24,8 +24,13 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
   window.location.assign(data.url)
 }
 
+interface PropsSetOrder {
+  priceID:string,
+  unit_amount: number,
+  currency: string
+}
 
-export default function SetOrder ({ priceID, unit_amount, currency } ){
+export default function SetOrder ({ priceID, unit_amount, currency }: PropsSetOrder ){
   //Valtio
   const snap = useSnapshot(state)
   //States
