@@ -3,6 +3,11 @@ export type Price = {
   quantity: number
 }
 
+export interface PriceObject{
+  product: string,
+  id: string,
+}
+
 export interface Product  {
   id: string,
   name: string,
