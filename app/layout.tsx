@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import Providers from './components/Providers'
 import Link from "next/link";
-import Navigation from './components/Navigation';
+import Navigation from './components/Nav/Navigation';
 
 const poppins = Roboto({
   subsets: ['latin'],
@@ -18,17 +18,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html lang="en">
-      <body className={poppins.className }>
-        <div className='h-screen overflow-hidden bg-slate-100'>
-
-        <Navigation/>
-        <Providers> {/* SessionProvider */}
-          <div className='max-w-[1280px] m-auto flex flex-row justify-between '>
-            {children}
-          </div>
-        </Providers>
-        </div>
+    <html lang="en" className='min-h-screen'>
+      <body className={poppins.className}>       
+          <Providers> {/* SessionProvider */}
+            <Navigation/>
+            <div className='max-w-[1280px] w-full flex flex-row m-auto font-sans'>
+              {children}
+            </div>
+          </Providers>
       </body>
     </html>
   )

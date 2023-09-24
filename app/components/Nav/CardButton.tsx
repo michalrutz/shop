@@ -25,7 +25,8 @@ export default function CardButton() {
 
   return(
     <Link href="http://localhost:3000/shop/cart" className="relative ">
-      <PiShoppingCartThin className="w-10 h-10 text-white"/> 
+      <PiShoppingCartThin className="w-10 h-10 text-slate-800
+      "/> 
       { quanity ? 
         <span className="absolute -top-[3px] right-[8px] bg-teal-500 w-5 h-5 text-sm rounded-full flex justify-center items-center">
           { quanity } 

@@ -1,7 +1,7 @@
-import SetOrder from "@/app/components/SetOrder";
+import SetOrder from "@/app/components/SingleProduct/SetOrder";
 import Stripe from "stripe";
 import Image from 'next/image';
-import { DisplayProduct } from "@/app/components/displays/DisplayProduc";
+import { DisplayProduct } from "@/app/components/SingleProduct/DisplayProduct";
 
 export default async function SingleProduct( {params} ) {
   const {id} = params; //get the query [id]
@@ -16,16 +16,15 @@ export default async function SingleProduct( {params} ) {
   const { id:priceID, unit_amount, currency } = price
 
   return (<>
-    <div className="min-w-full grid grid-cols-3 pt-4 m-auto">
-
-      <Image className="mainImg col-span-2 m-auto"
+    <div className="flex flex-col flex-wrap g-4 w-full sm:flex-row justify-center align-middle">
+      <Image className="max-h-[700px]  w-[512px] col-span-2"
         src={product.images[0]} // Route of the image file
         height={144} // Desired size with correct aspect ratio
         width={512} // Desired size with correct aspect ratio
         alt={product.name}
         style={{objectFit: "contain"}}
       />
-      <div className="col-span-1 ">
+      <div className="flex flex-col pt-4 min-w-[256px] justify-start align-top m-2">
         <DisplayProduct product={product} price={price}/>
         <SetOrder priceID={priceID} unit_amount={unit_amount} currency={currency}/>
       </div>

@@ -3,8 +3,8 @@ export function AdjustQuantity ( { quantity, setQuantity }:{ quantity:number, se
   return(
     <div className="
     bg-transparent h-10 max-w-[110px] flex gap-1 items-center
-    p-4
-    border border-slate-300 rounded-lg  ">
+    p-3
+    border border-slate-100 rounded-lg  ">
     <SmallButton quantity={quantity} setQuantity={ ()=> setQuantity(quantity-1) } text={"-"} />
     <span className="w-6 font-extrabold font-mono text-slate-700 text-center ">
     {quantity}
@@ -32,8 +32,8 @@ function SmallButton( {quantity, setQuantity, text}: {quantity:number, setQuanti
       setQuantity()
     } }
     >
-      <span className="absolute flex text-l font-bold  text-slate-700">
-      {text}
+      <span className=" flex flex-row justify-center relative -top-1 text-x text-xl h-6 w-6  font-bold  text-slate-700">
+        {text}
       </span>
     </button>
   </>

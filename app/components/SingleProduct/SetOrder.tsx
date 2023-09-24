@@ -1,11 +1,9 @@
 "use client"
-import { useShopStore } from '@/store';
-import Image from 'next/image';
-import React, { useState, useEffect } from "react";
-import { AdjustQuantity } from './buttons/AdjustQuantity';
+import React, { useState } from "react";
+import { AdjustQuantity } from '../buttons/AdjustQuantity';
 import { useSnapshot } from 'valtio';
 import { state } from '@/valtio/store';
-import PriceTag from './displays/PriceTag';
+import PriceTag from './PriceTag';
 
 const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:string, quantity:number) => {
   e.preventDefault();
@@ -22,8 +20,8 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
       ),
   });
   const data = await response.json();
-
-  window.location.assign(data)
+  console.log(data)
+  window.location.assign(data.url)
 }
 
 
@@ -48,12 +46,6 @@ export default function SetOrder ({ priceID, unit_amount, currency } ){
     }
   }
 
-  function removeItem( priceID:string ) {
-    state.cartItems = snap.cartItems.filter( item => item.priceID !== priceID)
-  }
-
-
-
 
   return(
     <>
@@ -62,7 +54,7 @@ export default function SetOrder ({ priceID, unit_amount, currency } ){
       className="w-[256px] flex flex-col gap-3 p-6
         bg-white rounded-lg m-auto
       ">
-      <h1 className="text-slate-900 font-bold text-lg border-b " >Set Order</h1>
+      <h1 className="text-slate-900 font-semibold text-lg border-b " >Set Order</h1>
       {/*QUANTITY*/}
       <div className='flex flex-row items-center justify-between pt-2'>
       <span className='text-teal-500 font-medium text-md'>In Stock</span>
@@ -77,7 +69,6 @@ export default function SetOrder ({ priceID, unit_amount, currency } ){
       {/*BUY NOW*/}
       <button className="callToAction Dom" onClick={ (e) => handleBuyNow(e, priceID, quantity) }>Buy Now</button>
       <button className="callToAction Sub" onClick={ (e) => addToCart( e, priceID, quantity ) }>Add to Basket</button>
-      <button className='text-slate-400'  onClick={ (e)=>{e.preventDefault(); removeItem(priceID); } }> remove</button>
     </form>
     </>
   );  

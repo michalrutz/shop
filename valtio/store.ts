@@ -1,4 +1,5 @@
 import { proxy, subscribe } from 'valtio';
+import { ProductWithPrice } from "@/type";
 
 type Product = {
   priceID: string;
@@ -14,7 +15,7 @@ if (typeof localStorage !== 'undefined') {
 }
 
 // Create the state object with the Product type
-export const state = proxy<{ cartItems: Product[] }>(
+export const state = proxy<{ cartItems: ProductWithPrice[] }>(
   storedData ? JSON.parse(storedData) : { cartItems: [] }
 );
 

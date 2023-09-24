@@ -1,5 +1,5 @@
 import CheckoutForm from "@/app/components/Checkout";
-import ProductDisplay from "@/app/components/SetOrder";
+import ProductDisplay from "@/app/components/SingleProduct/SetOrder";
 import Link from "next/link";
 import Image from "next/image";
 import { ProductWithPrice } from "@/type"
@@ -12,15 +12,14 @@ export default async function GetProductsPage() {
 
 
   return (  
-    <div className="flex flex-row gap-4 pt-4">
+    <div className="flex flex-row flex-wrap justify-center gap-4 pt-4 m-auto">
       {products.map(
         (product:ProductWithPrice) => { return (
-          <Link href={"http://localhost:3000/shop/products/"+product.priceID} className="bg-white">
-
-            <div className="w-[255px] h-[255px]" style={{ backgroundImage: `url(${product.images[0]})`, backgroundSize:"cover", backgroundPosition: "center" }}>
-            </div>
-            
-            <div className="p-1 pl-4 pr-4 pb-3">
+          <Link href={"http://localhost:3000/shop/products/"+product.priceID} className="bg-white shade">
+            {/*IMAGE*/}
+            <div className="max-w-full min-w-[255px] h-[255px]" style={{ backgroundImage: `url(${product.images[0]})`, backgroundSize:"cover", backgroundPosition: "center" }}></div>
+            {/*DESCRIPTION*/}
+            <div className="p-1 pl-4 pr-4 pb-3 ">
               <h3 className="font-light text-lg border-b ">{product.name.slice(0,1).toUpperCase()}{product.name.slice(1)}</h3>
               <p className="font-light text-xs p-1">21.6 W x 29.5 H x 0.3 D cm</p>
               <div className='flex flex-row justify-between items-center p-1'>
