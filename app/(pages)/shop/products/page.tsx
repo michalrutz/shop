@@ -1,7 +1,4 @@
-import CheckoutForm from "@/app/components/Checkout";
-import ProductDisplay from "@/app/components/SingleProduct/SetOrder";
 import Link from "next/link";
-import Image from "next/image";
 import { ProductWithPrice } from "@/type"
 
 export default async function GetProductsPage() {
