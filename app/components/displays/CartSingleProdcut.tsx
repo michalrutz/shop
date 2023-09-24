@@ -3,15 +3,13 @@ import Image from 'next/image'
 import { state } from "@/valtio/store";
 import { snapshot } from "valtio";
 import { useEffect, useState } from "react";
-import { ProductWithPrice } from "@/type"
-
+import { ProductWithPrice, Price } from "@/type"
 import { SmallRound } from "../buttons/SmallRound";
 
-export default  function CartSingleProdcut( props ) {
-  const { item } = props
+
+export default  function CartSingleProdcut( {item}: { item: Price } ) {
   const snap = snapshot(state)
   const [product, setProduct] = useState<ProductWithPrice>()
-
 
   async function fetchProduct( priceID:string ) {
     console.log("FETCH Product and Price of PriceID "+priceID)
@@ -39,8 +37,7 @@ export default  function CartSingleProdcut( props ) {
   }
 
 
-  return(
-    
+  return( 
   <div key={item.priceID} className="flex flex-row shade">
     { product ? (
     <>

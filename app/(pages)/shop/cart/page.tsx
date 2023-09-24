@@ -2,7 +2,6 @@
 
 import CartSingleProdcut from "@/app/components/displays/CartSingleProdcut";
 import { state } from "@/valtio/store";
-import { useRouter } from "next/navigation";
 import { useSnapshot } from "valtio";
 
 export default function Cart () {
