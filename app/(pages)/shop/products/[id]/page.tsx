@@ -11,7 +11,7 @@ export default async function SingleProduct( {params}:{params:{id:string}} ) {
     id
   );
   const product = await stripe.products.retrieve(
-    price.product
+    price.product.toString()
   )
   const { id:priceID, unit_amount, currency } = price
 
