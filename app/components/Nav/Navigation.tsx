@@ -2,7 +2,6 @@ import Link from "next/link";
 import CardButton from "./CardButton";
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from "../../api/auth/[...nextauth]/route";
-import Image from "next/image";
 import HoverMenu from "./HoverMenu";
 
 

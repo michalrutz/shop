@@ -14,3 +14,12 @@ export type ProductWithPrice = {
   description: string,
   metadata: {}
 }
+
+export interface Session {
+  user: {
+    name: string
+    email: string
+    image: string
+    uid: string
+  }
+}

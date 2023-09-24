@@ -1,11 +1,10 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import './Navigation.css'; // Import your CSS file for styling
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-function HoverMenu(props) {
+export default function HoverMenu(props:any) {
   const {user} = props;
 
   return (
@@ -30,4 +29,3 @@ function HoverMenu(props) {
   );
 }
 
-export default HoverMenu;
