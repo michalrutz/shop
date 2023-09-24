@@ -17,7 +17,7 @@ export const authOptions = {
     // ...add more providers here
   ],
   events: {
-    createUser: async (data) => {
+    createUser: async (data: {user:{ id:string, name:string, email:string }} ) => {
       const user = data.user
       console.log("CREATE STRIPE USER")
       const stripe = await new Stripe( process.env.STRIPE_TEST_SECRET as string, {
