@@ -8,6 +8,10 @@ const ClientProtectPage = () => {
     required: true
   })
 
+  if (!session) {
+    window.location.href = "/"
+  }
+
   return (
     <section className='flex flex-col md:flex-row justify-center items-center w-full h-full m-auto'>
       <aside className=' w-full md:max-w-[144px] max-w-[512px]'>
@@ -18,7 +22,7 @@ const ClientProtectPage = () => {
       </aside>
       <div className='flex flex-col justify-center w-full max-w-[512px] p-4 pt-10  min-h-screen' >
         <Image className="rounded-full"
-          src={session?.user?.image} // Route of the image file
+          src={session?.user?.image as string} // Route of the image file
           height={64} // Desired size with correct aspect ratio
           width={64} // Desired size with correct aspect ratio
           alt={"user photo"}
@@ -29,7 +33,6 @@ const ClientProtectPage = () => {
           <h2 className='mt-4 font-medium'>Email: {session?.user?.email}</h2>
         </div>
       </div>
-
     </section>
   )
 }
