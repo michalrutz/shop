@@ -3,6 +3,21 @@ export type Price = {
   quantity: number
 }
 
+export interface Product  {
+  id: string,
+  name: string,
+  unit_amount: number,
+  images: [string],
+  currency: string,
+  description: string,
+  metadata: Details
+}
+
+interface Details {
+  date: number,
+  technique: string
+}
+
 export type ProductWithPrice = {
   id: string,
   name: string,

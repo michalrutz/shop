@@ -1,4 +1,7 @@
-export function DisplayProduct({product, price}) {
+import { Price, Product } from "@/type";
+
+export function DisplayProduct( props: { product:Product, price:Price } ) {
+  const {product, price} = props
 
   return(<>
       <div className="w-full p-5 pt-0 font-thin font-sans text-slate-800">
