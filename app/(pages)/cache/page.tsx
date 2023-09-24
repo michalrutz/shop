@@ -1,7 +1,6 @@
 
 "use client"
 
-import CheckoutForm from '@/app/components/Checkout';
 import React, { useEffect, useState } from 'react';
 
 export default function Page() {
@@ -18,7 +17,6 @@ export default function Page() {
       <h1>Cache Page</h1>
       <p>{randomNumber}</p>
       <h1>Custom Checkout</h1>
-      <CheckoutForm/>
       <button onClick={()=>{setNum(num+1)}}>+</button>{num}
     </div>
   );
