@@ -19,10 +19,7 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
       // add -> add to Cart Zustand
       ),
   })
-
-  console.log(response)
   let j = await response.json()
-  console.log(j.url)
   window.location.assign(j.url)
 }
 
