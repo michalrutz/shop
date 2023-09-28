@@ -19,7 +19,6 @@ export default function Cart () {
     window.location.assign(session.url)
   }
 
-
   return(
     <>
       {/* PRODUCTS IN THE CART */}
