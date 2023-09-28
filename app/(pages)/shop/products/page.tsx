@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ProductWithPrice } from "@/type"
 
-export const baseUrl =
+const baseUrl =
   process.env.NODE_ENV === "production"
     ? "https://shop-7czobjnlo-michalrutz.vercel.app/"
     : "http://localhost:3000";
