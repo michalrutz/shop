@@ -4,7 +4,6 @@ import { Price } from "@/type";
 
 export async function POST(request: Request) {
   let data = await request.json()
-  console.log("DATA:"+JSON.stringify(data.items))
 
   const stripe = await new Stripe(process.env.STRIPE_TEST_SECRET as string, { apiVersion: "2022-11-15" })
   

@@ -18,9 +18,15 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
       // add priceID and quantity of each Product (from Zustand) { items: [{priceID, quantity}] }
       // add -> add to Cart Zustand
       ),
+  }).then( response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
   });
+
   const data = await response.json();
-  console.log(data)
+
   window.location.assign(data.url)
 }
 
