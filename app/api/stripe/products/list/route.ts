@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export async function GET(request: Request) {
+export async function GET() {
   const stripe = await new Stripe( process.env.STRIPE_TEST_SECRET as string, { apiVersion: "2022-11-15"} )
 
   const products = await stripe.products.list({
@@ -26,7 +26,6 @@ export async function GET(request: Request) {
     })
   )
   } 
-
 
   return NextResponse.json( productWithPrices )
 }
