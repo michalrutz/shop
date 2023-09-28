@@ -4,7 +4,7 @@ import { ProductWithPrice } from "@/type"
 export default async function GetProductsPage() {
   
   const products =
-      await fetch("http://localhost:3000/api/stripe/products/list")
+      await fetch("/api/stripe/products/list")
         .then( response => response.json() );
 
 
@@ -12,7 +12,7 @@ export default async function GetProductsPage() {
     <div className="flex flex-row flex-wrap justify-center gap-4 pt-4 m-auto">
       {products.map(
         (product:ProductWithPrice) => { return (
-          <Link href={"http://localhost:3000/shop/products/"+product.priceID} className="bg-white shade">
+          <Link href={"/shop/products/"+product.priceID} className="bg-white shade">
             {/*IMAGE*/}
             <div className="max-w-full min-w-[255px] h-[255px]" style={{ backgroundImage: `url(${product.images[0]})`, backgroundSize:"cover", backgroundPosition: "center" }}></div>
             {/*DESCRIPTION*/}
