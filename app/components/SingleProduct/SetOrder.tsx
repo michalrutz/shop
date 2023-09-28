@@ -20,14 +20,14 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
       ),
   }).then( response => {
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(JSON.stringify(response));
     }
     return response.json();
   });
 
-  const data = await response.json();
-
-  window.location.assign(data.url)
+  //const data = await response.json();
+  console.log(response)
+  //window.location.assign(data.url)
 }
 
 interface PropsSetOrder {
