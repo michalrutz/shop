@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { ProductWithPrice } from "@/type"
-import { baseUrl } from "../../../page"
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://shop-7czobjnlo-michalrutz.vercel.app/"
+    : "http://localhost:3000";
 
 export default async function GetProductsPage() {
   
