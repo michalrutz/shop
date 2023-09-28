@@ -1,22 +1,42 @@
 import Link from "next/link";
-import { ProductWithPrice } from "@/type"
-
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://shop-7czobjnlo-michalrutz.vercel.app/"
-    : "http://localhost:3000";
+import { SingleProductWithPrice } from "@/type"
+import Stripe from "stripe";
 
 export default async function GetProductsPage() {
   
-  const products =
-      await fetch(`${baseUrl}/api/stripe/products/list`)
-        .then( response => response.json() );
+ async function getProductsList() {
+  const stripe = await new Stripe( process.env.STRIPE_TEST_SECRET as string, { apiVersion: "2022-11-15"} )
 
+  const products = await stripe.products.list({
+    limit:10
+  })
+
+  let productWithPrices: SingleProductWithPrice[];
+  if (products?.data){
+      productWithPrices = await Promise.all(
+      products.data.map(async (product) => {
+        const price = await stripe.prices.retrieve( product.default_price as string)
+        return {
+          id: product.id as string,
+          name: product.name as string,
+          unit_amount: price.unit_amount as number,
+          images: product.images as string[],
+          currency: price.currency as string,
+          priceID: price.id as string,
+          description: product.description as (string | undefined),
+          metadata: product.metadata as {}
+        }
+      })
+    )
+    return productWithPrices
+    }
+  }
+  let products = await getProductsList();
 
   return (  
     <div className="flex flex-row flex-wrap justify-center gap-4 pt-4 m-auto">
-      {products.map(
-        (product:ProductWithPrice) => { return (
+      {products && products.map(
+        (product:SingleProductWithPrice) => { return (
           <Link href={"/shop/products/"+product.priceID} className="bg-white shade">
             {/*IMAGE*/}
             <div className="max-w-full min-w-[255px] h-[255px]" style={{ backgroundImage: `url(${product.images[0]})`, backgroundSize:"cover", backgroundPosition: "center" }}></div>

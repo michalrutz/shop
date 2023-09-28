@@ -33,6 +33,17 @@ export type ProductWithPrice = {
   metadata: {}
 }
 
+export type SingleProductWithPrice = {
+  id: string,
+  name: string,
+  unit_amount: number,
+  images: string[],
+  currency: string,
+  priceID: string,
+  description: (string | undefined),
+  metadata: {}
+}
+
 export interface Session {
   user: {
     name: string
