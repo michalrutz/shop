@@ -23,7 +23,7 @@ const handleBuyNow = async (e:React.MouseEvent<HTMLButtonElement>, priceID:strin
   console.log(response)
   let j = await response.json()
   console.log(j.url)
-  //window.location.assign(data.url)
+  window.location.assign(j.url)
 }
 
 interface PropsSetOrder {
