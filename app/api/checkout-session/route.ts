@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     line_items: data.items.map( (item:Price) => { return { price: item.priceID, quantity: item.quantity }}),
     mode: 'payment',
     success_url: "http://localhost:3000/shop/cart/success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url: `${"/shop/cart"}`, //return to
+    cancel_url: `${"http://localhost:3000/shop/cart"}`, //return to
   });
 
 
