@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ProductWithPrice } from "@/type"
+import { baseUrl } from "../../../page"
 
 export default async function GetProductsPage() {
   
   const products =
-      await fetch("/api/stripe/products/list")
+      await fetch(`${baseUrl}/api/stripe/products/list`)
         .then( response => response.json() );
 
 
