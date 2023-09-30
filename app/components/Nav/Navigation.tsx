@@ -9,21 +9,19 @@ export default async function Navigation() {
   const session = await getServerSession(authOptions)
 
   return (
-    <div className="flex w-full justify-center bg-slate-100 ">
-    <div className="bg-transparent flex flex-row gap-2 justify-between items-center pt-2 pb-1 text-slate-600 w-full max-w-screen-xl xl:absolute">
+      <div className="bg-transparent flex flex-row justify-between items-center pt-1 pb-1 pl-1 pr-2 max-w-[1300px] text-slate-600 w-full border-b text-lg">
       
-      <div className="flex flex-row items-center gap-3 pl-4 text-lg">
-        <Link href="/shop/products">Gallery</Link>
-      </div>
+        <div className="flex flex-row items-center  border rounded-full p-1.5 pl-3 pr-3 shade">
+          <Link href="/shop/products">Gallery</Link>
+        </div>
 
-      <div className="flex flex-row gap-3 justify-between items-center border pl-1 pr-3 rounded-full">
-        { session && session.user ?
-         <HoverMenu user={session.user}/> : 
-         <Link href="/api/auth/signin" className="pl-4">Sign In</Link>
-        }
-        <CardButton />
+        <div className="flex flex-row gap-3 justify-between items-center border pl-1 pr-3 rounded-full shade">
+          { session && session.user ?
+          <HoverMenu user={session.user}/> : 
+          <Link href="/api/auth/signin" className="pl-4">Sign In</Link>
+          }
+          <CardButton />
+        </div>
       </div>
-    </div>
-    </div>
   );
 }

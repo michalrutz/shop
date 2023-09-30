@@ -21,9 +21,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className='min-h-screen'>
       <body className={poppins.className}>       
           <Providers> {/* SessionProvider */}
-            <Navigation/>
-            <div className='max-w-[1280px] w-full flex flex-row m-auto font-sans'>
-              {children}
+            <div className='max-w-[1340px] w-full flex flex-row font-sans m-auto'>
+              <div className='flex flex-col w-full justify-center items-center border '>
+                <Navigation/>
+                {children}
+              </div>
             </div>
           </Providers>
       </body>

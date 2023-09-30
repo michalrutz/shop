@@ -17,7 +17,7 @@ export default async function SingleProduct( {params}:{params:{id:string}} ) {
   const { currency, unit_amount, id:priceID } = price 
 
   return (<>
-    <div className="flex flex-col flex-wrap g-4 w-full sm:flex-row justify-center align-middle">
+    <div className="flex flex-col flex-wrap g-4 w-full sm:flex-row justify-center align-middle pb-1.5">
       <Image className="max-h-[700px]  w-[512px] col-span-2"
         src={product.images[0]} // Route of the image file
         height={144} // Desired size with correct aspect ratio
