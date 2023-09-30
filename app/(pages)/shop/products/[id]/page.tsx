@@ -18,14 +18,14 @@ export default async function SingleProduct( {params}:{params:{id:string}} ) {
 
   return (<>
     <div className="flex flex-col flex-wrap g-4 w-full sm:flex-row justify-center align-middle pb-1.5">
-      <Image className="max-h-[700px]  w-[512px] col-span-2"
+      <Image className="max-h-[700px] col-span-2"
         src={product.images[0]} // Route of the image file
-        height={144} // Desired size with correct aspect ratio
-        width={512} // Desired size with correct aspect ratio
+        height={700} // Desired size with correct aspect ratio
+        width={550} // Desired size with correct aspect ratio
         alt={product.name}
         style={{objectFit: "contain"}}
       />
-      <div className="flex flex-col pt-4 min-w-[256px] justify-start align-top m-2">
+      <div className="flex flex-col pt-2 min-w-[256px] justify-start align-top m-2">
         <DisplayProduct product={product} />
         <SetOrder priceID={priceID} unit_amount={unit_amount as number} currency={currency}/>
       </div>

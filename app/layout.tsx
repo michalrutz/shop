@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={poppins.className}>       
           <Providers> {/* SessionProvider */}
             <div className='max-w-[1340px] w-full flex flex-row font-sans m-auto'>
-              <div className='flex flex-col w-full justify-center items-center border '>
+              <div className='flex flex-col w-full justify-center items-center  '>
                 <Navigation/>
                 {children}
               </div>

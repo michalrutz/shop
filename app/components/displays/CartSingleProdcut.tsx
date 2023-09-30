@@ -38,17 +38,19 @@ export default  function CartSingleProdcut( {item}: { item: Price } ) {
 
 
   return( 
-  <div key={item.priceID} className="flex flex-row shade">
+  <div key={item.priceID} className="flex flex-row border shade">
     { product ? (
     <>
-      <Link href={"/shop/products/"+item.priceID} className="min-w-[100px] flex flex-col " >
-        <Image className="rounded-md max-h-full"
-          src={product?.images[0]}
-          // Route of the image file
-          height={100} // Desired size with correct aspect ratio
-          width={100} // Desired size with correct aspect ratio
-          alt="Your Name" 
-        />
+      <Link href={"/shop/products/"+item.priceID} className="min-w-[128px] flex flex-col" >
+      <div style={{
+        backgroundImage: `url(${product?.images[0]})`,
+        width: "128px",
+        height: "128px",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        border: "0",
+        }}></div>
       </Link>
        {/* PRODICT DESCRIPTION */}
       <div className=" flex flex-col justify-between w-full p-3 pl-5 pr-6 font-sans text-slate-700 font-normal text-sm">

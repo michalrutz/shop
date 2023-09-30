@@ -23,15 +23,15 @@ export default function Cart () {
     <>
       {/* PRODUCTS IN THE CART */}
       { cartItems.length !== 0  ? (
-        <div className="flex flex-row flex-wrap justify-center align-middle items-center ml-auto mr-auto w-[1024px] max-w-full max-h-screen lg:min-h-screen" >
-          <div className="flex flex-col gap-3 bg-white w-full max-w-[512px]" >
+        <div className="flex flex-row flex-wrap justify-between align-middle items-center ml-auto mr-auto w-[900px] max-w-full max-h-screen " >
+          <div className="flex flex-col gap-1 w-full max-w-[584px] " >
           { snap.cartItems.map( item => { return (
               <CartSingleProdcut item={ item } key={item.priceID} />
             )})
           }
           </div>
       {/* CHECKOUT */}
-          <div className="min-h-[144px] flex flex-col items-center justify-center max-w-full w-[256px] " >
+          <div className="min-h-[144px] flex flex-col items-center justify-center max-w-full m-auto" >
             <button onClick={ (e) => { e.preventDefault(); handleCheckout(); }} className="callToAction Dom w-full max-w-[128px] ">
               Checkout
             </button>

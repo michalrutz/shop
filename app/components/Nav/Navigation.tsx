@@ -9,7 +9,7 @@ export default async function Navigation() {
   const session = await getServerSession(authOptions)
 
   return (
-      <div className="bg-transparent flex flex-row justify-between items-center pt-1 pb-1 pl-1 pr-2 max-w-[1300px] text-slate-600 w-full border-b text-lg">
+      <div className="bg-transparent flex flex-row justify-between items-center pt-1 pb-1 pl-1 pr-1 max-w-[1300px] text-slate-600 w-full border-b text-lg">
       
         <div className="flex flex-row items-center  border rounded-full p-1.5 pl-3 pr-3 shade">
           <Link href="/shop/products">Gallery</Link>

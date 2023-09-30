@@ -34,7 +34,7 @@ export default async function GetProductsPage() {
   let products = await getProductsList();
 
   return (
-    <div className="flex flex-row flex-wrap justify-center gap-1.5  pb-1.5">
+    <div className="flex flex-row flex-wrap justify-center gap-1.5 pt-1.5 pb-1.5">
       {products && products.map(
         (product:SingleProductWithPrice) => { return (
           <Link href={"/shop/products/"+product.priceID} className="bg-white shade">
