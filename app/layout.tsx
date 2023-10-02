@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html lang="en" className='min-h-screen'>
+    <html lang="en" className='min-h-screen w-full bg-slate-100'>
       <body className={poppins.className}>       
           <Providers> {/* SessionProvider */}
-            <div className='max-w-[1340px] w-full flex flex-row font-sans m-auto'>
+            <div className='core max-w-screen-2xl w-full min-h-screen flex flex-row items-start font-sans m-auto '>
               <div className='flex flex-col w-full justify-center items-center  '>
                 <Navigation/>
                 {children}

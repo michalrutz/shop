@@ -38,11 +38,12 @@ export default  function CartSingleProdcut( {item}: { item: Price } ) {
 
 
   return( 
-  <div key={item.priceID} className="flex flex-row border shade">
+  <div key={item.priceID} className="flex flex-row border shade bg-white">
     { product ? (
     <>
       <Link href={"/shop/products/"+item.priceID} className="min-w-[128px] flex flex-col" >
       <div style={{
+        backgroundColor: "rgb(242 242 242)",
         backgroundImage: `url(${product?.images[0]})`,
         width: "128px",
         height: "128px",
@@ -50,6 +51,7 @@ export default  function CartSingleProdcut( {item}: { item: Price } ) {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         border: "0",
+
         }}></div>
       </Link>
        {/* PRODICT DESCRIPTION */}
@@ -57,11 +59,11 @@ export default  function CartSingleProdcut( {item}: { item: Price } ) {
 
         <div className="flex flex-row justify-between w-full " >
             <Link href={"/shop/products/"+item.priceID} className="flex flex-col">
-              <h2 className="text-lg font-semibold pb-1">{ product?.name }</h2>
+              <h2 className="text-base font-semibold pb-1">{ product?.name }</h2>
             </Link>
             {/* PRICE COL */}
             <div className="flex flex-col items-end" >
-              <span className="text-lg font-semibold pb-1">{ Number.parseFloat((product?.unit_amount*item.quantity).toString().slice(0,-2)).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) }</span>
+              <span className="text-base font-semibold pb-1">{ Number.parseFloat((product?.unit_amount*item.quantity).toString().slice(0,-2)).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) }</span>
               { item.quantity > 1 && <span className="text-slate-400 border-t">{ Number.parseFloat((product?.unit_amount).toString().slice(0,-2)).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) } each</span>}
             </div>
         </div>

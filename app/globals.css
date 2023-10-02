@@ -16,9 +16,9 @@
   }
 }
 
-body {
+.core {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(2, 0, 36, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 30%, rgba(2, 0, 36, 0.05) 100%);
 }
 
 .seconderyText {

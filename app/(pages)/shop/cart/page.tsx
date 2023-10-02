@@ -23,7 +23,7 @@ export default function Cart () {
     <>
       {/* PRODUCTS IN THE CART */}
       { cartItems.length !== 0  ? (
-        <div className="flex flex-row flex-wrap justify-between align-middle items-center ml-auto mr-auto w-[900px] max-w-full max-h-screen " >
+        <div className="flex flex-row flex-wrap justify-between align-middle items-center ml-auto mr-auto w-[900px] max-w-full max-h-screen pt-1 " >
           <div className="flex flex-col gap-1 w-full max-w-[584px] " >
           { snap.cartItems.map( item => { return (
               <CartSingleProdcut item={ item } key={item.priceID} />
