@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../auth/[...nextauth]/route";
+import { Options } from "../../../auth/[...nextauth]/route";
 
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET as string, { apiVersion:"2022-11-15" })
 
@@ -10,7 +10,7 @@ export async function POST(request:NextRequest, response:NextResponse) {
   const body = await request.json()
   console.log(body.paymentIntentsID)
 
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(Options)
   if (session === null) {
     return NextResponse.json({
       message: "please log in"

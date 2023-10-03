@@ -1,13 +1,13 @@
 import Link from "next/link";
 import CardButton from "./CardButton";
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import { Options } from "../../api/auth/[...nextauth]/route";
 import HoverMenu from "./HoverMenu";
 import MaxWrapper from "../MaxWrapper";
 
 
 export default async function Navigation() {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(Options)
 
   return (
     <MaxWrapper>

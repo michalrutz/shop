@@ -7,7 +7,7 @@ import Stripe from "stripe";
 
 const prisma = new PrismaClient()
 
-export const authOptions = {
+export const Options = {
   adapter: PrismaAdapter(prisma),
   // Configure one or more authentication providers
   providers: [
@@ -41,6 +41,6 @@ export const authOptions = {
     }
   }
 }
-const handler = NextAuth( authOptions )
+const handler = NextAuth( Options )
 
 export { handler as GET, handler as POST }
