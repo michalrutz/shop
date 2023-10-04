@@ -1,14 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
 import { getServerSession } from "next-auth";
-import { Options } from "../../../auth/[...nextauth]/route";
+import { options } from "../../../auth/[...nextauth]/options";
 
 const stripe = new Stripe(process.env.STRIPE_TEST_SECRET as string, { apiVersion:"2022-11-15" })
 
 export async function POST(request:NextRequest, response:NextResponse) {
   let cart= []
   //1. check if user is logged
-  const session = await getServerSession(Options)
+  const session = await getServerSession(options)
   
   if (session === null) {
     return NextResponse.json({
