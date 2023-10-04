@@ -1,7 +1,7 @@
 import Link from "next/link";
 import CardButton from "./CardButton";
 import { getServerSession } from 'next-auth/next'
-import { options } from "../../api/auth/[...nextauth]/route";
+import { options } from "../../api/auth/[...nextauth]/options";
 import HoverMenu from "./HoverMenu";
 import MaxWrapper from "../MaxWrapper";
 
